@@ -13,7 +13,7 @@ class User extends CI_Controller {
         $this->load->model('user_model');
         $user = $this->user_model->find_by_email_pwd($email, $pwd);
         if($user){
-            $this->session->set_userdata('name', $user->username);
+            $this->session->set_userdata('user', $user);
             echo "success";
         }else{
             echo "fail";
