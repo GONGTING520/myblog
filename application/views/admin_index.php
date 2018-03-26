@@ -34,42 +34,6 @@
 <p style="margin-top:150px;text-align:center;color:#666;">欢迎来到个人空间管理页面，请从左边菜单中选择</p></div>
 	<div class="clear"></div>
 </div>
-<script type="text/javascript">
-<!--
-$(document).ready(function() {
-	$('#AdminTitle').text('管理首页');
-});
-$('.AutoCommitForm').ajaxForm({
-    success: function(html) {	
-		$('#error_msg').hide();
-		if(html.length>0)
-			$('#error_msg').html("<span class='error_msg'>"+html+"</span>");
-		else
-			$('#error_msg').html("<span class='ok_msg'>操作已成功完成</span>")
-		$('#error_msg').show("fast");
-    }
-});
-$('.AutoCommitJSONForm').ajaxForm({
-	dataType: 'json',
-    success: function(json) {	
-		$('#error_msg').hide();
-		if(json.error==0){
-			if(json.msg)
-				$('#error_msg').html("<span class='ok_msg'>"+json.msg+"</span>");
-			else
-				$('#error_msg').html("<span class='ok_msg'>操作已成功完成</span>");
-		}
-		else {
-			if(json.msg)
-				$('#error_msg').html("<span class='error_msg'>"+json.msg+"</span>");
-			else
-				$('#error_msg').html("<span class='error_msg'>操作已成功完成</span>");
-		}
-		$('#error_msg').show("fast");
-    }
-});
-//-->
-</script>
 </div>
 	<div class="clear"></div>
 	<div id="OSC_Footer"></div>
