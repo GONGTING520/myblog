@@ -28,4 +28,15 @@ class User_model extends CI_Model{
         ));
         return $this->db->affected_rows();
     }
+
+    // 根据user_id修改一条数据
+    public function update_by_user_id($user_id, $username, $sex, $birthday){
+        $this->db->where("user_id", $user_id);
+        $this->db->update("t_user", array(
+            "username" => $username,
+            "sex" => $sex,
+            "birthday" => $birthday
+        ));
+        return $this->db->affected_rows();
+    }
 }
