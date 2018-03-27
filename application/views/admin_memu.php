@@ -3,7 +3,7 @@
         <li class="caption first">个人信息管理		
             <ol>
                 <li class="inbox"><a href="admin/inbox">站内留言(0/1)</a></li>
-                <li class=""><a href="profile.htm">编辑个人资料</a></li>
+                <li class="profile"><a href="admin/profile">编辑个人资料</a></li>
                 <li class=""><a href="chpwd.htm">修改登录密码</a></li>
                 <li class=""><a href="userSettings.htm">网页个性设置</a></li>
             </ol>
