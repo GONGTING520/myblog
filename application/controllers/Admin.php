@@ -20,6 +20,12 @@ class Admin extends CI_Controller {
 	{
 		$this->load->view('blogs');
     }
+
+    // 显示所有会员资料设置
+    public function profile()
+	{
+		$this->load->view('profile');
+    }
     
     // 显示发表博客界面
     public function new_blog()
@@ -44,6 +50,23 @@ class Admin extends CI_Controller {
 
         $this->load->model('blog_model');
         $row = $this->blog_model->save_blog($title, $content, $blog_type);
+        if($row > 0){
+            echo "success";
+        }else {
+            echo "fail";
+        }
+    }
+
+    // 修改个人信息
+    public function change_info()
+    {
+        $user_id = $this->input->post('user_id');
+        $username = $this->input->post('username');
+        $sex = $this->input->post('sex');
+        $birthday = $this->input->post('birthday');
+
+        $this->load->model('user_model');
+        $row = $this->user_model->update_by_user_id($user_id, $username, $sex, $birthday);
         if($row > 0){
             echo "success";
         }else {
