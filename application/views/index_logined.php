@@ -21,19 +21,12 @@
 <![endif]-->
 <div id="OSC_Screen">
 		<?php include 'admin_header.php'?>
-		<div id="SearchBar">
-    		<form action="#">
-								<input name="user" value="154693" type="hidden">
-																								<input id="txt_q" name="q" class="SERACH" value="在此空间的博客中搜索" onblur="(this.value=='')?this.value='在此空间的博客中搜索':this.value" onfocus="if(this.value=='在此空间的博客中搜索'){this.value='';};this.select();" type="text">
-				<input class="SUBMIT" value="搜索" type="submit">
-    		</form>
-		</div>
 		<div class="clear"></div>
 	</div>
 	<div id="OSC_Content"><div class="SpaceChannel">
 	<div id="portrait"><a href="adminIndex.htm"><img src="images/portrait.gif" alt="Johnny" title="Johnny" class="SmallPortrait" user="154693" align="absmiddle"></a></div>
     <div id="lnks">
-		<strong><?php echo $this->session->userdata('name')?>的博客</strong>
+		<strong><?php echo $user->username;?>的博客</strong>
 		<div><a href="index_logined.htm">TA的博客列表</a>&nbsp;|
 			<a href="sendMsg.htm">发送留言</a>&nbsp;|
 			<a href="admin/index">个人管理</a></div>
@@ -131,43 +124,10 @@
 <script type="text/javascript" src="js/brush.js"></script>
 <link type="text/css" rel="stylesheet" href="css/shCore.css">
 <link type="text/css" rel="stylesheet" href="css/shThemeDefault.css">
-<script type="text/javascript"><!--
-$(document).ready(function(){
-	SyntaxHighlighter.config.clipboardSwf = '/js/syntax-highlighter-2.1.382/scripts/clipboard.swf';
-	SyntaxHighlighter.all();
-});
-//-->
-</script>
-<script type="text/javascript">
-<!--
-function delete_blog(blog_id){
-if(!confirm("文章删除后无法恢复，请确认是否删除此篇文章？")) return;
-ajax_post("/action/blog/delete?id="+blog_id,"",function(html){
-	$('#blog_'+blog_id).fadeOut();
-});
-}
-//-->
-</script></div>
+
+</div>
 	<div class="clear"></div>
 </div>
 </div>
-<script type="text/javascript" src="js/space.htm" defer="defer"></script>
-<script type="text/javascript">
-<!--
-$(document).ready(function() {
-	$('a.fancybox').fancybox({titleShow:false});
-});
 
-function pay_attention(pid,concern_it){
-	if(concern_it){
-		$("#p_attention_count").load("/action/favorite/add?mailnotify=true&type=3&id="+pid);
-		$('#attention_it').html('<a href="javascript:pay_attention('+pid+',false)" style="color:#A00;">取消关注</a>');	
-	}
-	else{
-		$("#p_attention_count").load("/action/favorite/cancel?type=3&id="+pid);
-		$('#attention_it').html('<a href="javascript:pay_attention('+pid+',true)" style="color:#3E62A6;">关注此文章</a>');
-	}
-}
-//-->
-</script>
 </body></html>
