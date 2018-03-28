@@ -33,9 +33,9 @@
   </div>
 		<div id="SearchBar">
     		<form action="Search">
-								<input name="user" value="154693" type="hidden">
-																								<input id="txt_q" name="q" class="SERACH" value="在此空间的博客中搜索" onblur="(this.value=='')?this.value='在此空间的博客中搜索':this.value" onfocus="if(this.value=='在此空间的博客中搜索'){this.value='';};this.select();" type="text">
-				<input class="SUBMIT" value="搜索" type="submit">
+					<input name="user" value="154693" type="hidden">
+					<input id="txt_q" name="q" class="SERACH" value="在此空间的博客中搜索" onblur="(this.value=='')?this.value='在此空间的博客中搜索':this.value" onfocus="if(this.value=='在此空间的博客中搜索'){this.value='';};this.select();" type="text">
+					<input class="SUBMIT" value="搜索" type="submit">
     		</form>
 		</div>
 		<div class="clear"></div>
