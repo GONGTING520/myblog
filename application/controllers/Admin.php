@@ -3,6 +3,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Admin extends CI_Controller {
 
+    // 构造函数
+    public function __construct(){
+        parent::__construct();
+		$this->load->model('blog_model');        
+    }
+
     // 显示登陆后的blog界面
 	public function index()
 	{
@@ -15,10 +21,37 @@ class Admin extends CI_Controller {
 		$this->load->view('inbox');
     }
 
-    // 显示所有博客界面
+    // 显示所有该用户博客界面
     public function blogs()
 	{
-		$this->load->view('blogs');
+        // 通过session获取用户id
+		$user = $this->session->userdata('user');
+		if(!$user){
+			redirect("welcome/index");
+		}
+		// 查找文章
+		$res = $this->blog_model->find_blog_by_user_id($user->user_id);
+
+		// 分页配置
+		$this->load->library('pagination');
+		$config['base_url'] = base_url().'admin/blogs';
+		$config['total_rows'] = count($res);
+		$config['per_page'] = 10;
+		$config['first_link'] = '首页';
+		$config['last_link'] = '尾页';
+		$config['next_link'] = '下一页';
+		$config['prev_link'] = '上一页';
+		$this->pagination->initialize($config);
+		$link = '<div class="page">'.$this->pagination->create_links().'</div>';
+
+		// 调用分页方法
+		// $this->uri->segment(3)指获取基础路径后面通过“/”分割后的第三个值
+		$rows = $this->blog_model->pagination_blog_by_user_id($user->user_id, $this->uri->segment(3), $config['per_page']);		
+		
+		$this->load->view('blogs', array(
+			"blogs" => $rows,
+			"link" => $link
+		));
     }
 
     // 显示所有会员资料设置
@@ -33,7 +66,6 @@ class Admin extends CI_Controller {
         // 获取session，如果有则去数据库中查找博客类型
         $user = $this->session->userdata('user');
         if($user){
-            $this->load->model('blog_model');
             $types = $this->blog_model->find_bolg_type_by_user_id($user->user_id);
             $this->load->view('new_blog', array(
                 "blog_types" => $types
@@ -48,25 +80,7 @@ class Admin extends CI_Controller {
         $content = $this->input->post('content');
         $blog_type = $this->input->post('blog_type');
 
-        $this->load->model('blog_model');
         $row = $this->blog_model->save_blog($title, $content, $blog_type);
-        if($row > 0){
-            echo "success";
-        }else {
-            echo "fail";
-        }
-    }
-
-    // 修改个人信息
-    public function change_info()
-    {
-        $user_id = $this->input->post('user_id');
-        $username = $this->input->post('username');
-        $sex = $this->input->post('sex');
-        $birthday = $this->input->post('birthday');
-
-        $this->load->model('user_model');
-        $row = $this->user_model->update_by_user_id($user_id, $username, $sex, $birthday);
         if($row > 0){
             echo "success";
         }else {
@@ -76,8 +90,43 @@ class Admin extends CI_Controller {
 
     // 删除一条博客
     public function delete_blog($blog_id){
-        $this->load->model('blog_model');
         $rows = $this->blog_model->delete_blog($blog_id);
+        if($rows > 0){
+            echo "success";
+        }else{
+            echo "fail";
+        }
+    }
+
+    // 显示一条微博详情页
+    public function blog_detail(){
+        $blog_id = $this->input->get('blogId');
+        // 查询博客信息
+        $res = $this->blog_model->find_blog_by_blog_id($blog_id);
+        // 查询评论信息
+        $comments = $this->blog_model->find_comment_by_blog_id($blog_id);
+        if($res){
+            $this->load->view('blog_detail', array(
+                "blog" => $res,
+                "comments" => $comments
+            ));
+        }else{
+            $this->load->view('index.html');
+        }
+    }
+
+    // 根据user_id获取所有的博客类型
+    public function blog_catalogs($user_id){
+        $res = $this->blog_model->find_blog_type_by_user_id($user_id);
+        $this->load->view('blog_catalogs', array("blog_types"=>$res));
+    }
+
+    // 插入一条博客类型
+    public function save_blog_catalogs(){
+        $type_name = $this->input->post('type_name');
+        $order_num = $this->input->post('order_num');
+        $user_id = $this->input->post('user_id');
+        $rows = $this->blog_model->save_blog_type($type_name, $user_id, $order_num);
         if($rows > 0){
             echo "success";
         }else{
