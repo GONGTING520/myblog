@@ -35,6 +35,16 @@ class Welcome extends CI_Controller {
 
 	public function logined()
 	{
-		$this->load->view('index_logined');
+		// 通过session获取用户id
+		$user = $this->session->userdata('user');
+		if(!$user){
+			redirect("welcome/index");
+		}
+		// 查找文章
+		$this->load->model('blog_model');
+		$rows = $this->blog_model->find_bolg_by_user_id($user->user_id);
+		$this->load->view('index_logined', array(
+			"blogs" => $rows
+		));
 	}
 }
