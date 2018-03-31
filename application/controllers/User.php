@@ -52,4 +52,21 @@ class User extends CI_Controller {
             echo "success";
         }
     }
+
+    // 修改个人信息
+    public function change_info()
+    {
+        $user_id = $this->input->post('user_id');
+        $username = $this->input->post('username');
+        $sex = $this->input->post('sex');
+        $birthday = $this->input->post('birthday');
+
+        $this->load->model('user_model');
+        $row = $this->user_model->update_by_user_id($user_id, $username, $sex, $birthday);
+        if($row > 0){
+            echo "success";
+        }else {
+            echo "fail";
+        }
+    }
 }
