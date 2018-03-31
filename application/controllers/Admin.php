@@ -73,4 +73,15 @@ class Admin extends CI_Controller {
             echo "fail";
         }
     }
+
+    // 删除一条博客
+    public function delete_blog($blog_id){
+        $this->load->model('blog_model');
+        $rows = $this->blog_model->delete_blog($blog_id);
+        if($rows > 0){
+            echo "success";
+        }else{
+            echo "fail";
+        }
+    }
 }
