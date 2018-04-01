@@ -56,7 +56,7 @@
 			}
 		?>
 	</select>
-	<a href="blogCatalogs.htm" onclick="return confirm('是否放弃当前编辑进入分类管理？');">分类管理»</a>
+	<a href="admin/blog_catalogs/<?php echo $user->user_id?>" onclick="return confirm('是否放弃当前编辑进入分类管理？');">分类管理»</a>
 	</td>
   </tr>
   <tr><td class='t'>内容（必填） 
@@ -124,12 +124,12 @@ $(function(){
 		if(confirm('确认提交嘛？')){
 			$.post('admin/save_blog', {
 				title: $("#f_title").val(),
-				content: $("#f_content").val(),
+				content: editor.text(),
 				blog_type: $("#f_blog_type").val(),
 			}, function(res){
 				if(res == 'success'){
 					alert('发表成功！');
-					location.href = 'admin/blogs';
+					location.href = 'welcome/logined';
 				}else{
 					alert('发表失败！');
 				}
