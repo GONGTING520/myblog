@@ -133,4 +133,29 @@ class Admin extends CI_Controller {
             echo "fail";
         }
     }
+
+    // 跳转到编辑博客
+    public function edit_blog($blog_id){
+        $res = $this->blog_model->find_blog_by_blog_id($blog_id);
+        $blog_type = $this->blog_model->find_bolg_type_by_user_id($this->session->userdata('user')->user_id);
+        $this->load->view('edit_blog', array(
+            'blog' => $res,
+            'blog_types'=> $blog_type
+        ));
+    }
+
+    //  修改博客的内容
+    public function update_blog(){
+        $title = $this->input->post('title');
+        $content = $this->input->post('content');
+        $blog_type = $this->input->post('blog_type');
+        $blog_id = $this->input->post('blog_id');
+
+        $rows = $this->blog_model->update_blog($blog_id, $blog_type, $content, $title);
+        if($rows > 0){
+            echo "success";
+        }else{
+            echo "fail";
+        }
+    }
 }
