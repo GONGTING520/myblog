@@ -7,7 +7,15 @@
   <link rel="stylesheet" href="css/space2011.css" type="text/css" media="screen">
   <link rel="stylesheet" type="text/css" href="css/jquery.css" media="screen">
   <style type="text/css">
-    body,table,input,textarea,select {font-family:Verdana,sans-serif,宋体;}	
+		body,table,input,textarea,select {font-family:Verdana,sans-serif,宋体;}	
+		#OSC_Screen .page a{
+			margin: 0 10px;
+		}
+		.TextContent{
+			white-space: nowrap;
+			overflow: hidden;
+			text-overflow: ellipsis;
+		}
   </style>
 </head>
 <body>
@@ -44,54 +52,24 @@
 	<div class="clear"></div>
 <div class="BlogList">
 <ul>
+	<?php foreach($blogs as $blog){?>
   <li class='Blog' id='blog_24027'>
-
-	<h2 class='BlogAccess_true BlogTop_0'><a href="viewPost_comment.htm">测试文章3 --作者</a></h2>
-
+	<h2 class='BlogAccess_true BlogTop_0'><a href="admin/blog_detail?blogId=<?php echo $blog->blog_id?>"><?php echo $blog->title?> --<?php echo $blog->username?></a></h2>
 	<div class='outline'>
-
-	  <span class='time'>发表于 2011年06月18日 0:34</span>
-
-	  <span class='catalog'>分类: <a href="?catalog=92334">工作日志</a></span>
-
+	  <span class='time'>发表于 <?php echo $blog->post_time?></span>
+	  <span class='catalog'>分类: <a href="?catalog=92334"><?php $blog->type_name?></a></span>
 	  <span class='stat'>统计: 0评/0阅</span>
-
-	  	</div>
-
-		<div class='TextContent' id='blog_content_24027'>
-
-				测试文章3
-
-		<div class='fullcontent'><a href="viewPost_comment.htm">阅读全文...</a></div>
-
-			</div>
-
-	  </li>
-  <li class="Blog" id="blog_24026">
-	<h2 class="BlogAccess_true BlogTop_0"><a href="viewPost_logined.htm">测试文章2 --作者</a></h2>
-	<div class="outline">
-	  <span class="time">发表于 2011年06月17日 23:06</span>
-	  <span class="catalog">分类: <a href="#">工作日志</a></span>
-	  <span class="stat">统计: 0评/1阅</span>
-	  	</div>
-		<div class="TextContent" id="blog_content_24026">
-				测试文章1
-		<div class="fullcontent"><a href="viewPost.htm">阅读全文...</a></div>
-			</div>
-	  </li>
-  <li class="Blog" id="blog_24025">
-	<h2 class="BlogAccess_true BlogTop_0"><a href="viewPost.htm">测试文章1 --作者</a></h2>
-	<div class="outline">
-	  <span class="time">发表于 2011年06月17日 23:04</span>
-	  <span class="catalog">分类: <a href="#">工作日志</a></span>
-	  <span class="stat">统计: 0评/3阅</span>
-	  	</div>
-		<div class="TextContent" id="blog_content_24025">
-				<b>测试文章1</b>
-		<div class="fullcontent"><a href="viewPost.htm">阅读全文...</a></div>
-			</div>
-	  </li>
+	</div>
+	<div class='TextContent' id='blog_content_24027'>
+		<?php echo $blog->content?>
+		<div class='fullcontent'>
+			<a href="admin/blog_detail?blogId=<?php echo $blog->blog_id?>">阅读全文...</a>
+		</div>
+	</div>
+	</li>
+	<?php }?>
 </ul>
+<?php echo $link?>
 <div class="clear"></div>
 	</div>
 </body></html>
