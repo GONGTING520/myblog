@@ -94,4 +94,15 @@ class Blog_model extends CI_Model{
         ));
         return $this->db->affected_rows();
     }
+
+    // 更新一条博客信息
+    public function update_blog($blog_id, $blog_type, $content, $title){
+        $this->db->where('b.blog_id', $blog_id);
+        $this->db->update('t_blog b', array(
+            'title' => $title,
+            'content' => $content,
+            'type_id' => $blog_type,
+        ));
+        return $this->db->affected_rows();
+    }
 }
