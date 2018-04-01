@@ -9,7 +9,15 @@
   <link rel="stylesheet" href="css/space2011.css" type="text/css" media="screen">
   <link rel="stylesheet" type="text/css" href="css/jquery.css" media="screen">
   <style type="text/css">
-    body,table,input,textarea,select {font-family:Verdana,sans-serif,宋体;}	
+		body,table,input,textarea,select {font-family:Verdana,sans-serif,宋体;}	
+		#OSC_Screen .page a{
+			margin: 0 10px;
+		}
+		.TextContent{
+			white-space: nowrap;
+			overflow: hidden;
+			text-overflow: ellipsis;
+		}
   </style>
 </head>
 <body>
@@ -37,28 +45,29 @@
 <ul>
 	<?php foreach($blogs as $blog){?>
 		<li class="Blog" id="blog_24027">
-			<h2 class="BlogAccess_true BlogTop_0"><a href="viewPost_comment.htm"><?php echo $blog->title?></a></h2>
+			<h2 class="BlogAccess_true BlogTop_0"><a href="admin/blog_detail?blogId=<?php echo $blog->blog_id?>"><?php echo $blog->title?></a></h2>
 			<div class="outline">
 				<span class="time">发表于 <?php echo $blog->post_time?></span>
 				<span class="catalog">分类: <a href="#"><?php echo $blog->type_name?></a></span>
 				<span class="stat">统计: 1评/4阅</span>
-				<span class="blog_admin">( <a href="newBlog.htm">修改</a> | <a class="delete_blogs" href="admin/delete_blog/<?php echo $blog->blog_id?>">删除</a> )</span>	  
+				<span class="blog_admin">( <a href="admin/edit_blog/<?php echo $blog->blog_id?>">修改</a> | <a class="delete_blogs" href="admin/delete_blog/<?php echo $blog->blog_id?>">删除</a> )</span>	  
 			</div>
 			<div class="TextContent" id="blog_content_24027">
 				<?php echo $blog->content?>
-				<div class="fullcontent"><a href="viewPost_comment.htm">阅读全文...</a></div>
+				<div class="fullcontent"><a href="admin/blog_detail?blogId=<?php echo $blog->blog_id?>">阅读全文...</a></div>
 			</div>
 		</li>
 	<?php }?>
 </ul>
+<?php echo $link?>
 <div class="clear"></div>
 	</div>
 <div class="BlogMenu"><div class="admin SpaceModule">
   <strong>博客管理</strong>
   <ul class="LinkLine">
-	<li><a href="newBlog.htm">发表博客</a></li>
-			<li><a href="blogCatalogs.htm">博客分类管理</a></li>
-	<li><a href="blogs.htm">文章管理</a></li>
+	<li><a href="admin/new_blog">发表博客</a></li>
+			<li><a href="">博客分类管理</a></li>
+	<li><a href="admin/blogs">文章管理</a></li>
 	<li><a href="blogComments.htm">网友评论管理</a></li>
   </ul>
 </div>
