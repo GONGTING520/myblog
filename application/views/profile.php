@@ -107,7 +107,8 @@
 	<option value="海外">海外</option>
 </select>
 <select name="city" id="userCity"><option selected="selected" value="哈尔滨">哈尔滨</option><option value="北安">北安</option><option value="大庆">大庆</option><option value="大兴安岭">大兴安岭</option><option value="鹤岗">鹤岗</option><option value="黑河">黑河</option><option value="佳木斯">佳木斯</option><option value="鸡西">鸡西</option><option value="牡丹江">牡丹江</option><option value="齐齐哈尔">齐齐哈尔</option><option value="七台河">七台河</option><option value="双鸭山">双鸭山</option><option value="绥化">绥化</option><option value="伊春">伊春</option></select>
-<script src="profile1_files/getcity.js"></script></td>
+
+</td>
 	</tr>
 	<tr>
 		<th>个性签名<br>不超过100字</th>		
@@ -137,7 +138,6 @@
 	$(function(){
 		var birthday = $('.birthday').attr('alt');
 		var aBirth = birthday.split('-');
-		// console.log(birthday);
 		if(birthday != ''){
 			$('.year option[value=' + aBirth[0] + ']').attr('selected', true);
 			$('.month option[value=' + parseInt(aBirth[1]) + ']').attr('selected', true);
@@ -147,7 +147,7 @@
 			var iMonth = $('.month').val();
 			var iDay = $('.day').val();
 			var birth = [$('.year').val(), iMonth<10?'0'+iMonth:iMonth, iDay<10?'0'+iDay:iDay].join('-');
-			$.post('admin/change_info', {
+			$.post('user/change_info', {
 				user_id: <?php echo $user->user_id?>,
 				username: $('#f_username').val(),
 				sex: $('input[name=gender]:checked').val(),
@@ -158,7 +158,7 @@
 				}else{
 					alert('修改失败！');
 				}
-			}, 'test');
+			}, 'text');
 		});
 	});
 </script>
