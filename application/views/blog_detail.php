@@ -49,7 +49,7 @@
     <div id="lnks">
 		<strong><?php echo $user->username?>的博客</strong>
 		<div>
-			<a href="index.htm">TA的博客列表</a>&nbsp;|
+			<a href="welcome/logined">TA的博客列表</a>&nbsp;|
 			<a href="javascript:sendmsg(154693)">发送留言</a>
 </span>
 		</div>
@@ -63,7 +63,7 @@
     <h1><?php echo $blog->title?></h1>
     <div class="BlogStat">
 						<span class="admin">
-			<a href="newBlog.htm">编辑</a>&nbsp;|&nbsp;<a href="admin/delete_blog/<?php echo $blog->blog_id?>" class="delete_blog">删除</a>
+			<a href="admin/edit_blog/<?php echo $blog->blog_id?>">编辑</a>&nbsp;|&nbsp;<a href="admin/delete_blog/<?php echo $blog->blog_id?>" class="delete_blog">删除</a>
 		</span>
 				发表于1小时前 , 
 		已有<strong>4</strong>次阅读  
