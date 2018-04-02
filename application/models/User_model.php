@@ -18,6 +18,13 @@ class User_model extends CI_Model{
         ))->row();
     }
 
+    // 根据user_id查询t_user表
+    public function find_by_user_id($user_id){
+        return $this->db->get_where("t_user", array(
+            "user_id" => $user_id
+        ))->row();
+    }
+
     // 插入一条数据
     public function save($email, $name, $pwd, $sex){
         $this->db->insert('t_user', array(
@@ -37,6 +44,13 @@ class User_model extends CI_Model{
             "sex" => $sex,
             "birthday" => $birthday
         ));
+        return $this->db->affected_rows();
+    }
+
+    // 根据user_id修改用户的password
+    public function update_pwd_by_user_id($user_id, $password){
+        $this->db->where('user_id', $user_id);
+        $this->db->update('t_user', array("password"=>$password));
         return $this->db->affected_rows();
     }
 }
