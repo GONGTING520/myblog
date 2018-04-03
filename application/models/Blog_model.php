@@ -115,4 +115,14 @@ class Blog_model extends CI_Model{
         $this->db->order_by('post_time', 'DESC');
         return $this->db->get()->result();
     }
+
+    // 根据user_id关联用户、信息表查询所有已发送留言
+    public function find_send_comments_by_user_id($user_id){
+        $this->db->select('m.*,u.username');
+        $this->db->from('t_message m');
+        $this->db->join('t_user u', 'u.user_id=m.receiver');
+        $this->db->where('m.sender', $user_id);
+        $this->db->order_by('post_time', 'DESC');
+        return $this->db->get()->result();
+    }
 }
