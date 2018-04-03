@@ -32,27 +32,29 @@
     <?php include 'admin_memu.php'?>
     <div id="AdminContent">
 <ul class="tabnav"> 
-	<li class="tab1 current"><a href="inbox.htm">所有留言<em>(1)</em></a></li> 
+	<li class="tab1 current"><a href="admin/inbox">所有留言<em>(<?php echo count($comments)?>)</em></a></li> 
 	<li class="tab4"><a href="outbox.htm">已发送留言<em>(0)</em></a></li>
     </ul>
 <div class="MsgList">
 <ul>
+	<?php foreach($comments as $comment){?>
     <li id="msg_186720">
-	<span class="sender"><a href="#"><img src="images/12_50.jpg" alt="红薯" title="红薯" class="SmallPortrait" user="12" align="absmiddle"></a></span>
-	<span class="msg">
-		<div class="outline">
-			<a href="#" target="user">红薯</a>
-			发送于 昨天(23:00) (2011-06-17 23:00)				
-			&nbsp;&nbsp;<a href="javascript:delete_in_msg(186720)">删除</a>
-		</div>
-		<div class="content">
-		  <div class="c">您好，欢迎使用 Blog。</div></div>
-		<div class="opts">
-			<a href="javascript:sendmsg(12,186720)">回复留言</a>
-					</div>
-	</span>
-	<div class="clear"></div>
-  </li>
+			<span class="sender"><a href="#"><img src="images/12_50.jpg" alt="红薯" title="红薯" class="SmallPortrait" user="12" align="absmiddle"></a></span>
+			<span class="msg">
+				<div class="outline">
+				<a href="#" target="user"><?php echo $comment->username?></a>
+				发送于 (<?php echo $comment->post_time?>)				
+				&nbsp;&nbsp;<a href="javascript:delete_in_msg(186720)">删除</a>
+				</div>
+				<div class="content">
+					<div class="c"><?php echo $comment->content?></div></div>
+				<div class="opts">
+					<a href="javascript:sendmsg(12,186720)">回复留言</a>
+				</div>
+			</span>
+			<div class="clear"></div>
+		</li>
+	<?php }?>
   </ul>
 </div>
 </div>
