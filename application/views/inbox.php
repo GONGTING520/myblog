@@ -33,7 +33,7 @@
     <div id="AdminContent">
 <ul class="tabnav"> 
 	<li class="tab1 current"><a href="admin/inbox">所有留言<em>(<?php echo count($comments)?>)</em></a></li> 
-	<li class="tab4"><a href="outbox.htm">已发送留言<em>(0)</em></a></li>
+	<li class="tab4"><a href="admin/outbox">已发送留言<em>(<?php echo $send_num?>)</em></a></li>
     </ul>
 <div class="MsgList">
 <ul>
