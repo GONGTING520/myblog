@@ -21,7 +21,27 @@ class Admin extends CI_Controller {
         $user = $this->session->userdata('user');
         if($user){
             $res = $this->blog_model->find_comments_by_user_id($user->user_id);
-            $this->load->view('inbox', array("comments"=>$res));
+            $send = $this->blog_model->find_send_comments_by_user_id($user->user_id);
+            $this->load->view('inbox', array(
+                "comments" => $res,
+                "send_num" => count($send)
+            ));
+        }else{
+            redirect('welcome/index');
+        }
+    }
+
+    // 显示发送留言界面
+    public function outbox()
+	{
+        $user = $this->session->userdata('user');
+        if($user){
+            $res = $this->blog_model->find_comments_by_user_id($user->user_id);
+            $send = $this->blog_model->find_send_comments_by_user_id($user->user_id);
+            $this->load->view('outbox', array(
+                "comments" => $send,
+                "receive_num" => count($res)
+            ));
         }else{
             redirect('welcome/index');
         }
