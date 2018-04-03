@@ -18,7 +18,13 @@ class Admin extends CI_Controller {
     // 显示留言板界面
     public function inbox()
 	{
-		$this->load->view('inbox');
+        $user = $this->session->userdata('user');
+        if($user){
+            $res = $this->blog_model->find_comments_by_user_id($user->user_id);
+            $this->load->view('inbox', array("comments"=>$res));
+        }else{
+            redirect('welcome/index');
+        }
     }
 
     // 显示所有该用户博客界面
