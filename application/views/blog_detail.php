@@ -111,7 +111,7 @@
 	<strong>最新博文</strong><ul>
     		<li><a href="#">测试文章2</a></li>
 				<li><a href="#">测试文章1</a></li>
-			<li class="more"><a href="index.htm">查看所有博文»</a></li>
+			<li class="more"><a href="welcome/logined">查看所有博文»</a></li>
     </ul>
 </div>
 
