@@ -53,4 +53,11 @@ class User_model extends CI_Model{
         $this->db->update('t_user', array("password"=>$password));
         return $this->db->affected_rows();
     }
+
+    // 根据user_id修改用户的signature
+    public function update_signature_by_user_id($user_id, $signature){
+        $this->db->where('user_id', $user_id);
+        $this->db->update('t_user', array("signature"=>$signature));
+        return $this->db->affected_rows();
+    }
 }
