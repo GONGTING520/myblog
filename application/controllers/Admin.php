@@ -47,6 +47,12 @@ class Admin extends CI_Controller {
         }
     }
 
+    // 修改用户心情界面
+    public function user_settings()
+    {
+        $this->load->view('user_settings');
+    }
+
     // 显示所有该用户博客界面
     public function blogs()
 	{
