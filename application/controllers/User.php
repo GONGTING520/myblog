@@ -96,6 +96,21 @@ class User extends CI_Controller {
                 echo 'fail';
             }
         }
+    }
 
+    // 修改用户的心情
+    public function update_signature()
+    {
+        $signature = $this->input->post('signature');
+        $user_id = $this->input->post('user_id');
+        $rows = $this->user_model->update_signature_by_user_id($user_id, $signature);
+
+        if($rows > 0){
+            $user = $this->user_model->find_by_user_id($user_id);
+            $this->session->set_userdata('user', $user);
+            echo "success";
+        }else{
+            echo "fail";
+        }
     }
 }
