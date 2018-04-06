@@ -35,8 +35,8 @@
 	<div id="portrait"><a href="adminIndex.htm"><img src="images/portrait.gif" alt="Johnny" title="Johnny" class="SmallPortrait" user="154693" align="absmiddle"></a></div>
     <div id="lnks">
 		<strong><?php echo $user->username;?>的博客</strong>
-		<div><a href="index_logined.htm">TA的博客列表</a>&nbsp;|
-			<a href="sendMsg.htm">发送留言</a>&nbsp;|
+		<div><a href="welcome/logined">TA的博客列表</a>&nbsp;|
+			<a href="message/send_message">发送留言</a>&nbsp;|
 			<a href="admin/index">个人管理</a></div>
 	</div>
 	<div class="clear"></div>
