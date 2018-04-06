@@ -50,7 +50,7 @@
 		<strong><?php echo $user->username?>的博客</strong>
 		<div>
 			<a href="welcome/logined">TA的博客列表</a>&nbsp;|
-			<a href="javascript:sendmsg(154693)">发送留言</a>
+			<a href="message/send_message">发送留言</a>
 </span>
 		</div>
 	</div>
