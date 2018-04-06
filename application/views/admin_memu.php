@@ -15,7 +15,7 @@
                 <li class="new_blog"><a href="admin/new_blog">发表博客</a></li>
                 <li class="blog_catalogs"><a href="admin/blog_catalogs/<?php echo $user->user_id?>">博客设置/分类管理</a></li>
                 <li class="blogs"><a href="admin/blogs">文章管理</a></li>
-                <li class=""><a href="blogComments.htm">博客评论管理</a></li>
+                <li class="blog_comments"><a href="comment/blog_comments/<?php echo $user->user_id?>">博客评论管理</a></li>
             </ol>
         </li>
     </ul>
