@@ -54,7 +54,7 @@
 <ul>
 	<?php foreach($blogs as $blog){?>
   <li class='Blog' id='blog_24027'>
-	<h2 class='BlogAccess_true BlogTop_0'><a href="admin/blog_detail?blogId=<?php echo $blog->blog_id?>"><?php echo $blog->title?> --<?php echo $blog->username?></a></h2>
+	<h2 class='BlogAccess_true BlogTop_0'><a href="welcome/blog_detail?blogId=<?php echo $blog->blog_id?>&userId=<?php echo $blog->user_id?>"><?php echo $blog->title?> --<?php echo $blog->username?></a></h2>
 	<div class='outline'>
 	  <span class='time'>发表于 <?php echo $blog->post_time?></span>
 	  <span class='catalog'>分类: <a href="?catalog=92334"><?php $blog->type_name?></a></span>
@@ -63,7 +63,7 @@
 	<div class='TextContent' id='blog_content_24027'>
 		<?php echo $blog->content?>
 		<div class='fullcontent'>
-			<a href="admin/blog_detail?blogId=<?php echo $blog->blog_id?>">阅读全文...</a>
+			<a href="welcome/blog_detail?blogId=<?php echo $blog->blog_id?>&userId=<?php echo $blog->user_id?>">阅读全文...</a>
 		</div>
 	</div>
 	</li>
