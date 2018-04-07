@@ -36,7 +36,6 @@
     <div id="lnks">
 		<strong><?php echo $user->username;?>的博客</strong>
 		<div><a href="welcome/logined">TA的博客列表</a>&nbsp;|
-			<a href="message/send_message">发送留言</a>&nbsp;|
 			<a href="admin/index">个人管理</a></div>
 	</div>
 	<div class="clear"></div>
@@ -66,9 +65,9 @@
   <strong>博客管理</strong>
   <ul class="LinkLine">
 	<li><a href="admin/new_blog">发表博客</a></li>
-			<li><a href="">博客分类管理</a></li>
+			<li><a href="admin/blog_catalogs/<?php echo $user->user_id?>">博客分类管理</a></li>
 	<li><a href="admin/blogs">文章管理</a></li>
-	<li><a href="blogComments.htm">网友评论管理</a></li>
+	<li><a href="comment/blog_comments/<?php echo $user->user_id?>">网友评论管理</a></li>
   </ul>
 </div>
 <div class="catalogs SpaceModule">
