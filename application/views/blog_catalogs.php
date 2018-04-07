@@ -25,7 +25,7 @@
 	<div id="OSC_Content">
 <div id="AdminScreen">
     <div id="AdminPath">
-        <a href="index_logined.htm">返回我的首页</a>&nbsp;»
+        <a href="welcome/logined">返回我的首页</a>&nbsp;»
     	<span id="AdminTitle"d>博客设置/分类管理</span>
     </div>
 	<?php include 'admin_memu.php'?>
@@ -56,7 +56,7 @@
 			<td class="num"><?php echo $blog_type->num?></td>
 			<td class="opts">
 				<a href="editCatalog.htm" title="点击修改博客分类">修改</a>
-				<a href="admin/delete_blog_type/<?php echo $blog_type->type_id?>">删除</a>
+				<a class="del" href="admin/delete_blog_type/<?php echo $blog_type->type_id?>">删除</a>
 			</td>
 		</tr>
 	<?php }?>
@@ -87,6 +87,20 @@
 					alert("添加失败！");
 				}
 			});
+		});
+
+		$('.del').on('click', function(){
+			if(confirm("确认删除此博客类型嘛？")){
+				$.get(this.href, {}, function(res){
+					if(res = 'success'){
+						alert('删除成功！');
+						location.href = location.href;
+					}else{
+						alert('删除失败！');
+					}
+				});
+			}
+			return false;
 		});
 	});
 </script>
