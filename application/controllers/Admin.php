@@ -190,4 +190,15 @@ class Admin extends CI_Controller {
             echo "fail";
         }
     }
+
+    // 通过type_id删除一条博客类型
+    public function delete_blog_type($type_id)
+    {
+        $rows = $this->blog_model->delete_blog_type($type_id);
+        if($rows > 0){
+            echo "success";
+        }else{
+            echo "fail";
+        }
+    }
 }
