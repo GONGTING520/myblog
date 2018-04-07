@@ -29,7 +29,7 @@
 <div id="OSC_Content">
 <div id="AdminScreen">
     <div id="AdminPath">
-        <a href="index_logined.htm">返回我的首页</a>&nbsp;»
+        <a href="welcome/logined">返回我的首页</a>&nbsp;»
     	<span id="AdminTitle">修改登录密码</span>
     </div>
     <?php include 'admin_memu.php'?>
