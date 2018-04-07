@@ -41,6 +41,12 @@ class Blog_model extends CI_Model{
         return $this->db->get()->result();
     }
 
+    // 根据type_id删除一条博客类型
+    public function delete_blog_type($type_id){
+        $this->db->delete('t_blog_type', array('type_id'=>$type_id));
+        return $this->db->affected_rows();
+    }
+
     // 根据blog_id删除一条博客
     public function delete_blog($blog_id){
         $this->db->delete('t_blog', array('blog_id' => $blog_id));
