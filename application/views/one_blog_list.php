@@ -74,7 +74,7 @@
 			</div>
 			<div class="TextContent" id="blog_content_24027">
 				<?php echo $blog->content?>
-				<div class="fullcontent"><a href="admin/blog_detail?blogId=<?php echo $blog->blog_id?>">阅读全文...</a></div>
+				<div class="fullcontent"><a href="welcome/blog_detail?blogId=<?php echo $blog->blog_id?>&userId=<?php echo $user->user_id?>">阅读全文...</a></div>
 			</div>
 		</li>
 	<?php }?>
