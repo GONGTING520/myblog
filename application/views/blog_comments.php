@@ -9,6 +9,9 @@
   <link rel="stylesheet" type="text/css" href="css/jquery.css" media="screen">
   <style type="text/css">
     body,table,input,textarea,select {font-family:Verdana,sans-serif,宋体;}	
+		#OSC_Screen .page a{
+			margin: 0 10px;
+		}
   </style>
 </head>
 <body>
@@ -25,14 +28,14 @@
 	<div id="OSC_Content">
 <div id="AdminScreen">
     <div id="AdminPath">
-        <a href="index_logined.htm">返回我的首页</a>&nbsp;»
+        <a href="welcome/logined">返回我的首页</a>&nbsp;»
     	<span id="AdminTitle">管理首页</span>
     </div>
     
 		<?php include 'admin_memu.php'?>
     <div id="AdminContent">
 <div class="MainForm BlogCommentManage">
-  <h3>共有 <?php echo count($comments)?> 篇博客评论，每页显示 3 个，共 1 页</h3>
+  <h3>共有 <?php echo $count?> 篇博客评论，每页显示 3 个，共 <?php echo ceil($count/3)?> 页</h3>
   <ul>
 		<?php foreach($comments as $comment){?>
 			<li id="cmt_24027_154693_261665734" class="row_1">
@@ -52,6 +55,7 @@
 			</li>
 		<?php }?>
 	</ul>
+	<?php echo $link?>
 </div>
 
 </div>
