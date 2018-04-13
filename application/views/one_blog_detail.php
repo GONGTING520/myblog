@@ -46,7 +46,7 @@
 		<strong><?php echo $user->username?>的博客</strong>
 		<div>
 			<a href="welcome/blogs/<?php echo $user->user_id?>">TA的博客列表</a>&nbsp;|
-			<a href="#" class="send_msg">发送留言</a>
+			<a href="message/send_message" class="send_msg">发送留言</a>
 </span>
 		</div>
 	</div>
@@ -106,7 +106,7 @@
 	<strong>最新博文</strong><ul>
     		<li><a href="#">测试文章2</a></li>
 				<li><a href="#">测试文章1</a></li>
-			<li class="more"><a href="welcome/logined">查看所有博文»</a></li>
+			<li class="more"><a href="welcome/blogs/<?php echo $user->user_id?>">查看所有博文»</a></li>
     </ul>
 </div>
 
