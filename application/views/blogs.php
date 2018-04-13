@@ -25,13 +25,13 @@
 	<div id="OSC_Content">
 <div id="AdminScreen">
     <div id="AdminPath">
-      <a href="admin/index">返回我的首页</a>&nbsp;»
+      <a href="welcome/logined">返回我的首页</a>&nbsp;»
     	<span id="AdminTitle">博客文章管理</span>
     </div>
     <?php include 'admin_memu.php'?>
     <div id="AdminContent">
 <div class="MainForm BlogArticleManage">
-  <h3 class="title">共有 <?php echo count($blogs)?> 篇博客，每页显示 10 个，共 1 页</h3>
+  <h3 class="title">共有 <?php echo count($blogs)?> 篇博客，每页显示 10 个，共 <?php echo ceil(count($blogs)/10)?> 页</h3>
     <div id="BlogOpts">
 	<a href="javascript:;" onclick="select_all();">全选</a>&nbsp;|
 	<a href="javascript:;" onclick="unselect_all();">取消</a>&nbsp;|
